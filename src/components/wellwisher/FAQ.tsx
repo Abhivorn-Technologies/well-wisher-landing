@@ -35,10 +35,10 @@ export function FAQ() {
             return (
               <motion.div
                 key={f.q}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.06, duration: 0.5, ease: "easeOut" }}
                 className={`overflow-hidden rounded-2xl border bg-white transition-all ${
                   isOpen ? "border-primary/30 shadow-card" : "border-border shadow-soft"
                 }`}
