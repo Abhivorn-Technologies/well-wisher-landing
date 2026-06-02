@@ -31,10 +31,10 @@ export function HowItWorks() {
             {steps.map((s, i) => (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.14, duration: 0.6, ease: "easeOut" }}
                 className="relative text-center"
               >
                 <div className="relative mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-card ring-1 ring-border">
