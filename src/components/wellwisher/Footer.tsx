@@ -28,8 +28,27 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row">
-          <div>© {new Date().getFullYear()} Well Wisher Companion Services. All rights reserved.</div>
-          <div>Care Like Family. ❤️</div>
+          <div>©2026 Well Wisher Companion Services. All rights reserved.</div>
+          <div className="flex flex-wrap items-center justify-center gap-1 md:justify-end">
+            <span>Developed by</span>
+            <a
+              href="https://abhivorn.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-honey hover:underline font-medium"
+            >
+              Abhivorn Technologies Pvt Ltd
+            </a>
+            <span className="opacity-50">&amp;</span>
+            <a
+              href="https://www.digilevelup.in/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-honey hover:underline font-medium"
+            >
+              DIGI LEVELUP
+            </a>
+          </div>
         </div>
       </div>
     </footer>
