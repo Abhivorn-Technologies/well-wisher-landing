@@ -1,4 +1,5 @@
-import { Heart, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import logoAsset from "@/assets/well-wisher-logo.png.asset.json";
 
 export function Footer() {
   return (
