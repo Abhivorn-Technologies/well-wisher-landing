@@ -34,15 +34,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
         <a href="#home" className="flex items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-mix shadow-soft">
-            <Heart className="h-5 w-5 text-white" fill="white" />
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="text-base font-bold text-foreground">Well Wisher</span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-              Care Like Family
-            </span>
-          </span>
+          <img src={logoAsset.url} alt="Well Wisher — Care Like Family" className="h-10 w-auto md:h-12" />
         </a>
 
         <ul className="hidden items-center gap-7 lg:flex">
