@@ -35,11 +35,11 @@ export function WhyChoose() {
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.4 }}
-              whileHover={{ y: -4 }}
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.06, duration: 0.5, ease: "easeOut" }}
+              whileHover={{ y: -6 }}
               className="group flex items-start gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:border-primary/30 hover:shadow-card"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-accent text-foreground shadow-soft">
