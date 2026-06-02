@@ -12,12 +12,12 @@ export function PeaceOfMind() {
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
       <div className="absolute inset-0 -z-10 bg-gradient-hero opacity-60" />
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-8 lg:grid-cols-2 lg:gap-12">
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
+          initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative"
         >
           <div className="relative overflow-hidden rounded-[2rem] shadow-card ring-1 ring-white/50">
