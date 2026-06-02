@@ -1,7 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
-import logoAsset from "@/assets/well-wisher-logo.png.asset.json";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -40,7 +41,7 @@ export function Navbar() {
       />
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
         <a href="#home" className="flex items-center gap-2">
-          <img src={logoAsset.url} alt="Well Wisher — Care Like Family" className="h-10 w-auto md:h-12" />
+          <img src="/well-wisher-logo.png" alt="Well Wisher — Care Like Family" className="h-10 w-auto md:h-12" />
         </a>
 
         <ul className="hidden items-center gap-7 lg:flex">

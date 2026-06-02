@@ -1,0 +1,41 @@
+<svg width="280" height="60" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Heart shape with figures and leaves -->
+  <defs>
+    <path id="heart" d="M30,15 C30,10 34,5 40,5 C44,5 48,8 50,12 C52,8 56,5 60,5 C66,5 70,10 70,15 C70,28 50,42 50,42 C50,42 30,28 30,15 Z" fill="none" stroke="#1E5CC8" stroke-width="3" stroke-linejoin="round"/>
+  </defs>
+  
+  <!-- Plus symbol at top -->
+  <g transform="translate(45, 2)">
+    <rect x="-1" y="-4" width="2" height="8" fill="#1E5CC8"/>
+    <rect x="-4" y="-1" width="8" height="2" fill="#1E5CC8"/>
+  </g>
+  
+  <!-- Heart outline -->
+  <path d="M35,18 C35,13 39,8 45,8 C49,8 53,11 55,15 C57,11 61,8 65,8 C71,8 75,13 75,18 C75,31 55,45 55,45 C55,45 35,31 35,18 Z" fill="none" stroke="#1E5CC8" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Left figure (blue) -->
+  <circle cx="48" cy="20" r="3" fill="#1E5CC8"/>
+  <path d="M48,24 L48,30" stroke="#1E5CC8" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M45,26 L51,26" stroke="#1E5CC8" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Right figure (teal) -->
+  <circle cx="62" cy="22" r="3" fill="#20A39E"/>
+  <path d="M62,26 L62,32" stroke="#20A39E" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M59,28 L65,28" stroke="#20A39E" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Left leaf -->
+  <path d="M38,35 Q35,38 33,40 Q35,38 37,36" fill="#7EC850" stroke="#7EC850" stroke-width="0.5"/>
+  
+  <!-- Right leaf -->
+  <path d="M72,35 Q75,38 77,40 Q75,38 73,36" fill="#7EC850" stroke="#7EC850" stroke-width="0.5"/>
+  
+  <!-- Well Wisher text -->
+  <text x="90" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#0C3E9E">
+    Well Wisher
+  </text>
+  
+  <!-- Care Like Family tagline -->
+  <text x="90" y="52" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#7EC850" letter-spacing="1">
+    CARE LIKE FAMILY
+  </text>
+</svg>

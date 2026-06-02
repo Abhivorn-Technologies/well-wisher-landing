@@ -1,5 +1,4 @@
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
-import logoAsset from "@/assets/well-wisher-logo.png.asset.json";
 
 export function Footer() {
   return (
@@ -8,7 +7,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <a href="#home" className="inline-flex items-center gap-2 rounded-xl bg-white/95 p-3">
-              <img src={logoAsset.url} alt="Well Wisher — Care Like Family" className="h-12 w-auto" />
+              <img src="/well-wisher-logo.png" alt="Well Wisher — Care Like Family" className="h-12 w-auto" />
             </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
               Trusted healthcare companions for hospital visits, elderly care,

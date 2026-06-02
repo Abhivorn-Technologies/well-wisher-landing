@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Play, ShieldCheck, Clock, BadgeCheck, Pill, Car, HeartPulse, Stethoscope } from "lucide-react";
-import heroImg from "@/assets/hero-companion.jpg";
 
 const badges = [
   { icon: ShieldCheck, label: "Verified Companions" },
@@ -82,7 +81,7 @@ export function Hero() {
         >
           <div className="relative aspect-square overflow-hidden rounded-[2.5rem] bg-gradient-hero shadow-card ring-1 ring-white/60">
             <img
-              src={heroImg}
+              src="/hero-companion.jpg"
               alt="Healthcare companion supporting an elderly patient at the hospital"
               width={1024}
               height={1024}

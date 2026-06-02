@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Plane, Briefcase, HeartHandshake } from "lucide-react";
-import img from "@/assets/family-peace.jpg";
 
 const pills = [
   { icon: Plane, label: "For NRIs" },
@@ -22,7 +21,7 @@ export function PeaceOfMind() {
         >
           <div className="relative overflow-hidden rounded-[2rem] shadow-card ring-1 ring-white/50">
             <img
-              src={img}
+              src="/family-peace.jpg"
               alt="Happy elderly couple connecting with family"
               loading="lazy"
               width={1024}
