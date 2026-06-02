@@ -1,9 +1,6 @@
 {
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "env": {
-    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url"
-  },
   "rewrites": [
     {
       "source": "/:path((?!_next|api|.*\\..*|favicon\\.ico).*)",
