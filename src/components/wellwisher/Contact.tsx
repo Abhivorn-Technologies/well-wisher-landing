@@ -100,7 +100,7 @@ export function Contact() {
 
             <button
               type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-sm font-semibold text-white shadow-card transition-transform hover:scale-[1.01] sm:w-auto"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-sm font-semibold text-white shadow-card transition-transform hover:scale-[1.01]"
             >
               {submitted ? "Thank you — we'll reach out shortly" : (<>Send Booking Request <Send className="h-4 w-4" /></>)}
             </button>
