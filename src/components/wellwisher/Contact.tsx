@@ -65,12 +65,12 @@ export function Contact() {
           </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-            className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-7 shadow-card md:p-10"
+            className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-6 shadow-card sm:p-10"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Name" name="name" required maxLength={100} placeholder="Your full name" />
