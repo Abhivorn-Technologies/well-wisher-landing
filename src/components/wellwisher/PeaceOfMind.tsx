@@ -37,10 +37,10 @@ export function PeaceOfMind() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
+          initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Family Peace of Mind</span>
           <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
