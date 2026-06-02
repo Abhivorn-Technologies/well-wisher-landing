@@ -33,7 +33,7 @@ export function Hero() {
             Well Wisher Companion Services
           </span>
 
-          <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-[2rem] font-bold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
             Never Attend a <span className="text-gradient-mix">Hospital Visit</span> Alone Again
           </h1>
 
