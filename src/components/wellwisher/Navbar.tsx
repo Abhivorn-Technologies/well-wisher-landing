@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import logoAsset from "@/assets/well-wisher-logo.png.asset.json";
 
@@ -15,6 +15,8 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -32,6 +34,10 @@ export function Navbar() {
         scrolled ? "glass-strong shadow-soft" : "bg-transparent"
       }`}
     >
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-gradient-accent"
+        style={{ scaleX }}
+      />
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
         <a href="#home" className="flex items-center gap-2">
           <img src={logoAsset.url} alt="Well Wisher — Care Like Family" className="h-10 w-auto md:h-12" />

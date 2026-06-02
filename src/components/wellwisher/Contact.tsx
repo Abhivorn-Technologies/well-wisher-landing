@@ -19,10 +19,10 @@ export function Contact() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid gap-10 lg:grid-cols-5">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-2"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">Contact</span>
@@ -65,12 +65,12 @@ export function Contact() {
           </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-            className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-7 shadow-card md:p-10"
+            className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-6 shadow-card sm:p-10"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Name" name="name" required maxLength={100} placeholder="Your full name" />
@@ -100,7 +100,7 @@ export function Contact() {
 
             <button
               type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-sm font-semibold text-white shadow-card transition-transform hover:scale-[1.01] sm:w-auto"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-sm font-semibold text-white shadow-card transition-transform hover:scale-[1.01]"
             >
               {submitted ? "Thank you — we'll reach out shortly" : (<>Send Booking Request <Send className="h-4 w-4" /></>)}
             </button>

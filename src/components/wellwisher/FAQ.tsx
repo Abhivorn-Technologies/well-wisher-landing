@@ -17,10 +17,10 @@ export function FAQ() {
     <section className="relative py-20 md:py-28">
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">FAQ</span>
@@ -35,10 +35,10 @@ export function FAQ() {
             return (
               <motion.div
                 key={f.q}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.06, duration: 0.5, ease: "easeOut" }}
                 className={`overflow-hidden rounded-2xl border bg-white transition-all ${
                   isOpen ? "border-primary/30 shadow-card" : "border-border shadow-soft"
                 }`}

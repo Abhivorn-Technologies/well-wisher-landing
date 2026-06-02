@@ -19,10 +19,10 @@ export function WhyChoose() {
     <section id="about" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Why Well Wisher</span>
@@ -35,11 +35,11 @@ export function WhyChoose() {
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.4 }}
-              whileHover={{ y: -4 }}
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.06, duration: 0.5, ease: "easeOut" }}
+              whileHover={{ y: -6 }}
               className="group flex items-start gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:border-primary/30 hover:shadow-card"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-accent text-foreground shadow-soft">

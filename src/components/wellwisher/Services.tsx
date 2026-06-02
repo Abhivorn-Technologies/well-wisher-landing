@@ -17,10 +17,10 @@ export function Services() {
     <section id="services" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Our Services</span>
@@ -37,11 +37,11 @@ export function Services() {
           {services.map((s, i) => (
             <motion.div
               key={s.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: i * 0.07, duration: 0.5 }}
-              whileHover={{ y: -6 }}
+              transition={{ delay: i * 0.08, duration: 0.6, ease: "easeOut" }}
+              whileHover={{ y: -8 }}
               className="group relative overflow-hidden rounded-3xl border border-border bg-white p-7 shadow-soft transition-all hover:border-primary/30 hover:shadow-card"
             >
               <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-accent opacity-0 blur-2xl transition-opacity group-hover:opacity-40" />

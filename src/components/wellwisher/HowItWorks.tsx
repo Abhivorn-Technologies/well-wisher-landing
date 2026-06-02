@@ -13,10 +13,10 @@ export function HowItWorks() {
     <section id="how" className="relative bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">How It Works</span>
@@ -26,15 +26,15 @@ export function HowItWorks() {
         </motion.div>
 
         <div className="relative mt-16">
-          <div className="absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent md:block" />
-          <div className="grid gap-10 md:grid-cols-4">
+          <div className="absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent lg:block" />
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.14, duration: 0.6, ease: "easeOut" }}
                 className="relative text-center"
               >
                 <div className="relative mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-card ring-1 ring-border">
