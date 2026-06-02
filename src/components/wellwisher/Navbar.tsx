@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import logoAsset from "@/assets/well-wisher-logo.png.asset.json";
 
 const links = [
   { label: "Home", href: "#home" },
