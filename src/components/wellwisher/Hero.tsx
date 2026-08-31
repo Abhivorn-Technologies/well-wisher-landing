@@ -27,9 +27,10 @@ export function Hero() {
         <div>
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1], delay: 0.08 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.215, 0.61, 0.355, 1], delay: 0.05 }}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur shadow-soft">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-green" />
@@ -39,9 +40,10 @@ export function Hero() {
 
           {/* Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: [0.215, 0.61, 0.355, 1], delay: 0.2 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.215, 0.61, 0.355, 1], delay: 0.15 }}
             className="mt-6 text-[2rem] font-bold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl"
           >
             Never Attend a <span className="text-gradient-mix">Hospital Visit</span> Alone Again
@@ -49,9 +51,10 @@ export function Hero() {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1], delay: 0.34 }}
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1], delay: 0.25 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
             Trusted healthcare companions for hospital visits, medical appointments,
@@ -62,14 +65,15 @@ export function Hero() {
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: [0.215, 0.61, 0.355, 1], delay: 0.48 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.215, 0.61, 0.355, 1], delay: 0.35 }}
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <motion.a
               href="#contact"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ y: -2, scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-white shadow-card transition-all duration-200 hover:shadow-glow"
             >
@@ -77,8 +81,8 @@ export function Hero() {
             </motion.a>
             <motion.a
               href="#how"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ y: -2, scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className="group inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3.5 text-sm font-semibold text-foreground shadow-soft transition-all duration-200 hover:border-primary hover:text-primary hover:shadow-card"
             >
@@ -91,18 +95,20 @@ export function Hero() {
 
           {/* Feature Badges */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: [0.215, 0.61, 0.355, 1], delay: 0.6 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.215, 0.61, 0.355, 1], delay: 0.45 }}
             className="mt-10 flex flex-wrap items-center gap-3"
           >
             {badges.map((b, i) => (
               <motion.div
                 key={b.label}
                 initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
-                whileHover={{ y: -3, scale: 1.02 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.45 + i * 0.08 }}
+                whileHover={{ y: -3, scale: 1.04 }}
                 className="inline-flex cursor-default items-center gap-2 rounded-full glass px-3.5 py-2 text-xs font-semibold text-foreground/80 shadow-soft transition-all duration-200 hover:border-primary/40 hover:shadow-card"
               >
                 <b.icon className="h-4 w-4 text-primary transition-transform duration-200 group-hover:scale-110" />
@@ -114,9 +120,10 @@ export function Hero() {
 
         {/* Hero Image and Floating Elements */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 18 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1], delay: 0.22 }}
+          initial={{ opacity: 0, scale: 0.94, y: 22 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: [0.215, 0.61, 0.355, 1], delay: 0.18 }}
           className="relative mx-auto w-full max-w-lg lg:max-w-none"
         >
           <div className="relative aspect-square overflow-hidden rounded-[2.5rem] bg-gradient-hero shadow-card ring-1 ring-white/60 transition-transform duration-300 hover:scale-[1.01]">
@@ -133,10 +140,11 @@ export function Hero() {
             <motion.div
               key={f.label}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: [0, -8, 0] }}
+              whileInView={{ opacity: 1, y: [0, -8, 0] }}
+              viewport={{ once: false }}
               whileHover={{ scale: 1.06, y: -2 }}
               transition={{
-                opacity: { delay: 0.5 + f.delay, duration: 0.6 },
+                opacity: { delay: 0.4 + f.delay, duration: 0.6 },
                 y: { repeat: Infinity, duration: 4 + f.delay, ease: "easeInOut" },
               }}
               style={{ top: f.top, left: f.left, right: f.right }}

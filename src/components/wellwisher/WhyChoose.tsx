@@ -23,7 +23,7 @@ export function WhyChoose() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
@@ -39,9 +39,10 @@ export function WhyChoose() {
               key={f.title}
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{ delay: i * 0.05, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
               whileHover={{ y: -5, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               className="group flex cursor-default items-start gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-accent text-foreground shadow-soft transition-transform duration-300 group-hover:scale-110">

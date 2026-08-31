@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FileText, AlertTriangle, CheckCircle2, ShieldAlert, ArrowLeft, HeartHandshake } from "lucide-react";
+import Link from "next/link";
 import { Navbar } from "@/components/wellwisher/Navbar";
 import { Footer } from "@/components/wellwisher/Footer";
 import { FloatingWhatsApp } from "@/components/wellwisher/FloatingWhatsApp";
@@ -24,18 +25,19 @@ export default function TermsOfServicePage() {
             transition={{ duration: 0.4 }}
             className="mb-6"
           >
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:underline"
             >
               <ArrowLeft className="h-4 w-4" /> Back to Home
-            </a>
+            </Link>
           </motion.div>
 
           {/* Page Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur shadow-soft">
@@ -53,7 +55,8 @@ export default function TermsOfServicePage() {
           {/* Prominent Emergency Notice Banner */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-8 rounded-2xl border border-red-200 bg-red-50/90 p-5 text-red-950 shadow-soft"
           >
@@ -73,8 +76,9 @@ export default function TermsOfServicePage() {
           {/* Terms Content Container */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.05 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
             className="mt-8 space-y-8 rounded-[2rem] border border-border bg-white p-6 shadow-card sm:p-10"
           >
             {/* 1. Introduction and Acceptance */}
@@ -249,8 +253,8 @@ export default function TermsOfServicePage() {
               </p>
               <p className="pt-2 text-sm font-medium text-foreground">
                 For questions regarding these Terms of Service, please reach out to us at{" "}
-                <a href="mailto:care@wellwisher.com" className="font-semibold text-primary hover:underline">
-                  care@wellwisher.com
+                <a href="mailto:support@wellwisherinfo.com" className="font-semibold text-primary hover:underline">
+                  support@wellwisherinfo.com
                 </a>
                 .
               </p>

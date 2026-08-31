@@ -4,6 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Well Wisher — Care Like Family | Healthcare Companions",
   description: "Trusted healthcare companions for hospital visits, elderly care, diagnostics, and patient support. Book a Well Wisher companion — care like family.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Well Wisher — Care Like Family",
     description: "Never attend a hospital visit alone. Verified healthcare companions across India.",
@@ -22,6 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

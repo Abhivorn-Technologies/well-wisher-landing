@@ -45,7 +45,7 @@ export function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
@@ -58,7 +58,7 @@ export function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 28, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
           className="relative mx-auto mt-14 max-w-3xl"
         >
@@ -95,6 +95,7 @@ export function Testimonials() {
 
           <div className="mt-6 flex items-center justify-center gap-4">
             <motion.button
+              type="button"
               aria-label="Previous review"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.92 }}
@@ -107,6 +108,7 @@ export function Testimonials() {
               {reviews.map((_, n) => (
                 <button
                   key={n}
+                  type="button"
                   aria-label={`Go to review ${n + 1}`}
                   onClick={() => setI(n)}
                   className={`h-2 rounded-full transition-all duration-300 ${n === i ? "w-8 bg-gradient-primary" : "w-2 bg-border hover:bg-muted-foreground/40"}`}
@@ -114,6 +116,7 @@ export function Testimonials() {
               ))}
             </div>
             <motion.button
+              type="button"
               aria-label="Next review"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.92 }}

@@ -17,7 +17,7 @@ export function HowItWorks() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
@@ -35,9 +35,10 @@ export function HowItWorks() {
                 key={s.title}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: i * 0.12, duration: 0.55, ease: [0.215, 0.61, 0.355, 1] }}
-                whileHover={{ y: -6 }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ delay: i * 0.1, duration: 0.55, ease: [0.215, 0.61, 0.355, 1] }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="group relative cursor-default text-center"
               >
                 <div className="relative mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-card ring-1 ring-border transition-all duration-300 group-hover:scale-105 group-hover:shadow-glow group-hover:ring-primary/40">

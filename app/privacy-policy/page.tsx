@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Eye, MapPin, AlertCircle, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { Navbar } from "@/components/wellwisher/Navbar";
 import { Footer } from "@/components/wellwisher/Footer";
 import { FloatingWhatsApp } from "@/components/wellwisher/FloatingWhatsApp";
@@ -24,18 +25,19 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.4 }}
             className="mb-6"
           >
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:underline"
             >
               <ArrowLeft className="h-4 w-4" /> Back to Home
-            </a>
+            </Link>
           </motion.div>
 
           {/* Page Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur shadow-soft">
@@ -53,8 +55,9 @@ export default function PrivacyPolicyPage() {
           {/* Policy Document Content */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.05 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
             className="mt-10 space-y-8 rounded-[2rem] border border-border bg-white p-6 shadow-card sm:p-10"
           >
             {/* Section 1 */}
@@ -216,8 +219,8 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                 By booking, accessing, or using Well Wisher services, you explicitly consent to the collection, processing, and logistical use of your information as outlined in this Privacy Policy. Users and authorized family representatives may request updates, corrections, or clarification regarding their data by contacting our support team at{" "}
-                <a href="mailto:care@wellwisher.com" className="font-semibold text-primary hover:underline">
-                  care@wellwisher.com
+                <a href="mailto:support@wellwisherinfo.com" className="font-semibold text-primary hover:underline">
+                  support@wellwisherinfo.com
                 </a>
                 .
               </p>

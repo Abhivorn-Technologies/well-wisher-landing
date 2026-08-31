@@ -16,6 +16,26 @@ const services = [
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string) || "";
+    const phone = (formData.get("phone") as string) || "";
+    const email = (formData.get("email") as string) || "";
+    const service = (formData.get("service") as string) || "";
+    const date = (formData.get("date") as string) || "";
+    const message = (formData.get("message") as string) || "";
+
+    const subject = encodeURIComponent(`Booking Request: ${service || "Companion Service"} - ${name}`);
+    const body = encodeURIComponent(
+      `Hello Well Wisher Team,\n\nI would like to request companion assistance.\n\nDetails:\n- Name: ${name}\n- Phone: ${phone}\n- Email: ${email}\n- Service Needed: ${service}\n- Preferred Date: ${date}\n- Message: ${message}\n\nThank you!`
+    );
+
+    window.location.href = `mailto:support@wellwisherinfo.com?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+  };
+
   return (
     <section id="contact" className="relative bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
@@ -23,7 +43,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
             className="lg:col-span-2"
           >
@@ -39,7 +59,7 @@ export function Contact() {
               <motion.a
                 href="tel:+919490906153"
                 whileHover={{ y: -3, scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
                 className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
               >
@@ -57,7 +77,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3, scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
                 className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
               >
@@ -71,18 +91,21 @@ export function Contact() {
               </motion.a>
 
               <motion.a
-                href="mailto:care@wellwisher.com"
+                href="mailto:support@wellwisherinfo.com"
+                onClick={() => {
+                  window.location.href = "mailto:support@wellwisherinfo.com";
+                }}
                 whileHover={{ y: -3, scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
-                className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
+                className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
               >
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-mix text-white shadow-soft transition-transform duration-300 group-hover:scale-110">
                   <Mail className="h-5 w-5" />
                 </span>
                 <div>
                   <div className="text-xs font-medium text-muted-foreground">Email</div>
-                  <div className="text-sm font-bold text-foreground transition-colors duration-200 group-hover:text-primary">care@wellwisher.com</div>
+                  <div className="text-sm font-bold text-foreground transition-colors duration-200 group-hover:text-primary">support@wellwisherinfo.com</div>
                 </div>
               </motion.a>
             </div>
@@ -91,9 +114,9 @@ export function Contact() {
           <motion.form
             initial={{ opacity: 0, y: 28, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
-            onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+            onSubmit={handleSubmit}
             className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-6 shadow-card transition-shadow duration-300 hover:shadow-glow sm:p-10"
           >
             <div className="grid gap-4 sm:grid-cols-2">
@@ -103,17 +126,19 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-foreground">Service Needed</label>
                 <select
+                  name="service"
                   required
                   className="rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all duration-200 focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                 >
                   <option value="">Select a service</option>
-                  {services.map((s) => <option key={s}>{s}</option>)}
+                  {services.map((s) => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
               <Field label="Preferred Date" name="date" type="date" />
               <div className="sm:col-span-2">
                 <label className="text-xs font-semibold text-foreground">Message</label>
                 <textarea
+                  name="message"
                   rows={4}
                   maxLength={1000}
                   placeholder="Tell us about the visit..."

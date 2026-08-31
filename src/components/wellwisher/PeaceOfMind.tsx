@@ -17,7 +17,7 @@ export function PeaceOfMind() {
         <motion.div
           initial={{ opacity: 0, x: -30, scale: 0.97 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
           className="relative"
         >
@@ -34,8 +34,8 @@ export function PeaceOfMind() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.25, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             className="absolute -bottom-6 -right-4 hidden cursor-default rounded-2xl glass-strong p-4 shadow-card md:block"
           >
@@ -47,7 +47,7 @@ export function PeaceOfMind() {
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Family Peace of Mind</span>
@@ -67,8 +67,8 @@ export function PeaceOfMind() {
                 key={p.label}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.08, duration: 0.4 }}
+                viewport={{ once: false }}
+                transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
                 whileHover={{ y: -3, scale: 1.03 }}
                 className="inline-flex cursor-default items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-foreground shadow-soft transition-all duration-200 hover:border-primary/40 hover:shadow-card"
               >
@@ -79,7 +79,7 @@ export function PeaceOfMind() {
 
           <motion.a
             href="#contact"
-            whileHover={{ y: -2, scale: 1.02 }}
+            whileHover={{ y: -2, scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
             transition={{ duration: 0.2 }}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-white shadow-card transition-all duration-200 hover:shadow-glow"

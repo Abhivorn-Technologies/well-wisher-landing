@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Smartphone } from "lucide-react";
+import Link from "next/link";
+
+/**
+ * Well Wisher Mobile App Destination URL
+ * Update this URL with the official store listing or download link
+ */
+export const WELL_WISHER_APP_URL = "https://play.google.com/store/apps/details?id=com.wellwisher.app";
 
 const links = [
   { label: "Home", href: "#home", id: "home" },
@@ -76,13 +83,13 @@ export function Navbar() {
         style={{ scaleX }}
       />
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
-        <a
+        <Link
           href="/#home"
           onClick={(e) => handleNavClick(e, "#home", "home")}
           className="flex items-center gap-2 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
         >
           <img src="/well-wisher-logo.png" alt="Well Wisher — Care Like Family" className="h-10 w-auto md:h-12" />
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-7 lg:flex">
           {links.map((l) => {
@@ -130,7 +137,8 @@ export function Navbar() {
           })}
         </ul>
 
-        <div className="hidden items-center gap-3 md:flex">
+        {/* Action Buttons: [Call Now] [Book Companion] [ App ] */}
+        <div className="hidden items-center gap-2.5 md:flex">
           <motion.a
             href="tel:+919490906153"
             whileHover={{ y: -2, scale: 1.02 }}
@@ -150,6 +158,18 @@ export function Navbar() {
             className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:shadow-glow"
           >
             Book Companion
+          </motion.a>
+          <motion.a
+            href={WELL_WISHER_APP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download Well Wisher App"
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ duration: 0.2 }}
+            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3.5 py-2 text-sm font-semibold text-primary shadow-soft transition-all duration-200 hover:border-primary hover:bg-secondary/60 hover:shadow-card"
+          >
+            <Smartphone className="h-4 w-4 text-primary" /> App
           </motion.a>
         </div>
 
@@ -191,10 +211,10 @@ export function Navbar() {
                   </li>
                 );
               })}
-              <li className="mt-2 flex gap-2">
+              <li className="mt-2 flex flex-wrap gap-2">
                 <a
                   href="tel:+919490906153"
-                  className="flex-1 rounded-full border border-border bg-white px-4 py-2 text-center text-sm font-semibold text-foreground shadow-soft active:scale-95"
+                  className="flex-1 min-w-[100px] rounded-full border border-border bg-white px-3 py-2 text-center text-sm font-semibold text-foreground shadow-soft active:scale-95"
                 >
                   Call Now
                 </a>
@@ -202,9 +222,17 @@ export function Navbar() {
                   href="https://wa.me/919490906153?text=Hi%20Well%20Wisher%2C%20I%20would%20like%20to%20book%20a%20companion."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 rounded-full bg-gradient-primary px-4 py-2 text-center text-sm font-semibold text-white shadow-soft active:scale-95"
+                  className="flex-1 min-w-[120px] rounded-full bg-gradient-primary px-3 py-2 text-center text-sm font-semibold text-white shadow-soft active:scale-95"
                 >
                   WhatsApp
+                </a>
+                <a
+                  href={WELL_WISHER_APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-w-[80px] inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-white px-3 py-2 text-center text-sm font-semibold text-primary shadow-soft active:scale-95"
+                >
+                  <Smartphone className="h-4 w-4" /> App
                 </a>
               </li>
             </ul>

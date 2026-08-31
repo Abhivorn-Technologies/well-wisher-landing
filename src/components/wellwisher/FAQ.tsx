@@ -215,7 +215,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
@@ -238,8 +238,8 @@ export function FAQ() {
                 key={f.id}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: Math.min(i * 0.03, 0.3), duration: 0.45, ease: [0.215, 0.61, 0.355, 1] }}
+                viewport={{ once: false, amount: 0.1 }}
+                transition={{ delay: Math.min(i * 0.025, 0.25), duration: 0.45, ease: [0.215, 0.61, 0.355, 1] }}
                 whileHover={{ y: -2 }}
                 className={`w-full overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${
                   isOpen

@@ -14,12 +14,15 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const mv = useMotionValue(0);
   const rounded = useTransform(mv, (v) => Math.floor(v).toLocaleString());
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-40px" });
 
   useEffect(() => {
     if (inView) {
+      mv.set(0);
       const controls = animate(mv, to, { duration: 1.8, ease: "easeOut" });
       return controls.stop;
+    } else {
+      mv.set(0);
     }
   }, [inView, mv, to]);
 
@@ -34,16 +37,23 @@ export function Metrics() {
   return (
     <section className="relative py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="overflow-hidden rounded-[2rem] bg-gradient-primary p-8 shadow-card md:p-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="overflow-hidden rounded-[2rem] bg-gradient-primary p-8 shadow-card md:p-12"
+        >
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {stats.map((s, i) => (
               <motion.div
                 key={s.label}
-                initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                initial={{ opacity: 0, y: 26, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.12, duration: 0.6, ease: "easeOut" }}
-                className="text-center"
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
+                whileHover={{ y: -4, scale: 1.03 }}
+                className="cursor-default text-center transition-transform duration-200"
               >
                 <div className="text-4xl font-bold text-white md:text-5xl">
                   <Counter to={s.value} suffix={s.suffix} />
@@ -54,7 +64,7 @@ export function Metrics() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
