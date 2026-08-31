@@ -43,10 +43,10 @@ export function Testimonials() {
     <section id="testimonials" className="relative bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Testimonials</span>
@@ -55,8 +55,14 @@ export function Testimonials() {
           </h2>
         </motion.div>
 
-        <div className="relative mx-auto mt-14 max-w-3xl">
-          <div className="relative overflow-hidden rounded-[2rem] bg-white p-8 shadow-card ring-1 ring-border md:p-12">
+        <motion.div
+          initial={{ opacity: 0, y: 28, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
+          className="relative mx-auto mt-14 max-w-3xl"
+        >
+          <div className="relative overflow-hidden rounded-[2rem] bg-white p-8 shadow-card ring-1 ring-border md:p-12 transition-all duration-300 hover:shadow-glow">
             <Quote className="absolute right-8 top-8 h-16 w-16 text-primary/10" />
             <AnimatePresence mode="wait">
               <motion.div
@@ -64,7 +70,7 @@ export function Testimonials() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.45 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <div className="flex gap-1">
                   {Array.from({ length: r.rating }).map((_, n) => (
@@ -75,7 +81,7 @@ export function Testimonials() {
                   "{r.text}"
                 </p>
                 <div className="mt-6 flex items-center gap-3">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-gradient-primary text-base font-bold text-white">
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-gradient-primary text-base font-bold text-white shadow-soft">
                     {r.name.charAt(0)}
                   </span>
                   <div>
@@ -88,32 +94,36 @@ export function Testimonials() {
           </div>
 
           <div className="mt-6 flex items-center justify-center gap-4">
-            <button
-              aria-label="Previous"
+            <motion.button
+              aria-label="Previous review"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
               onClick={() => setI((v) => (v - 1 + reviews.length) % reviews.length)}
               className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white shadow-soft transition-colors hover:border-primary hover:text-primary"
             >
               <ChevronLeft className="h-4 w-4" />
-            </button>
+            </motion.button>
             <div className="flex gap-2">
               {reviews.map((_, n) => (
                 <button
                   key={n}
                   aria-label={`Go to review ${n + 1}`}
                   onClick={() => setI(n)}
-                  className={`h-2 rounded-full transition-all ${n === i ? "w-8 bg-gradient-primary" : "w-2 bg-border"}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${n === i ? "w-8 bg-gradient-primary" : "w-2 bg-border hover:bg-muted-foreground/40"}`}
                 />
               ))}
             </div>
-            <button
-              aria-label="Next"
+            <motion.button
+              aria-label="Next review"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
               onClick={() => setI((v) => (v + 1) % reviews.length)}
               className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white shadow-soft transition-colors hover:border-primary hover:text-primary"
             >
               <ChevronRight className="h-4 w-4" />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-// File: D:\Abhivorn Tech\Client_Projects\wellwish\well-wisher-landing\app\page.tsx
+// File: C:\Users\pc4\Desktop\well-wisher-landing\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

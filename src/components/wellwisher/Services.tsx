@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import {
   Hospital, UserRound, FlaskConical, Activity, Car, Bell, ArrowUpRight,
@@ -17,10 +19,10 @@ export function Services() {
     <section id="services" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Our Services</span>
@@ -35,27 +37,29 @@ export function Services() {
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <motion.div
+            <motion.a
               key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: i * 0.08, duration: 0.6, ease: "easeOut" }}
-              whileHover={{ y: -8 }}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-white p-7 shadow-soft transition-all hover:border-primary/30 hover:shadow-card"
+              href="#contact"
+              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.08, duration: 0.55, ease: [0.215, 0.61, 0.355, 1] }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative block overflow-hidden rounded-3xl border border-border bg-white p-7 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
             >
-              <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-accent opacity-0 blur-2xl transition-opacity group-hover:opacity-40" />
+              <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-accent opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-40" />
               <div className="relative">
-                <span className="inline-grid h-14 w-14 place-items-center rounded-2xl bg-gradient-primary text-white shadow-soft transition-transform group-hover:scale-110">
+                <span className="inline-grid h-14 w-14 place-items-center rounded-2xl bg-gradient-primary text-white shadow-soft transition-transform duration-300 group-hover:scale-110">
                   <s.icon className="h-6 w-6" />
                 </span>
-                <h3 className="mt-5 text-xl font-bold text-foreground">{s.title}</h3>
+                <h3 className="mt-5 text-xl font-bold text-foreground transition-colors duration-200 group-hover:text-primary">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-                <div className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                  Learn more <ArrowUpRight className="h-4 w-4" />
+                <div className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
+                  Book assistance <ArrowUpRight className="h-4 w-4" />
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

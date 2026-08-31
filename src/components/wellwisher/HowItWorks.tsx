@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { CalendarCheck, UserCheck, HeartHandshake, Home } from "lucide-react";
 
@@ -13,10 +15,10 @@ export function HowItWorks() {
     <section id="how" className="relative bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">How It Works</span>
@@ -31,19 +33,20 @@ export function HowItWorks() {
             {steps.map((s, i) => (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.14, duration: 0.6, ease: "easeOut" }}
-                className="relative text-center"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.12, duration: 0.55, ease: [0.215, 0.61, 0.355, 1] }}
+                whileHover={{ y: -6 }}
+                className="group relative cursor-default text-center"
               >
-                <div className="relative mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-card ring-1 ring-border">
-                  <s.icon className="h-8 w-8 text-primary" />
-                  <span className="absolute -right-2 -top-2 grid h-7 w-7 place-items-center rounded-full bg-gradient-accent text-xs font-bold text-foreground shadow-soft">
+                <div className="relative mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-card ring-1 ring-border transition-all duration-300 group-hover:scale-105 group-hover:shadow-glow group-hover:ring-primary/40">
+                  <s.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  <span className="absolute -right-2 -top-2 grid h-7 w-7 place-items-center rounded-full bg-gradient-accent text-xs font-bold text-foreground shadow-soft transition-transform duration-200 group-hover:scale-110">
                     {i + 1}
                   </span>
                 </div>
-                <h3 className="mt-5 text-lg font-bold text-foreground">{s.title}</h3>
+                <h3 className="mt-5 text-lg font-bold text-foreground transition-colors duration-200 group-hover:text-primary">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
               </motion.div>
             ))}

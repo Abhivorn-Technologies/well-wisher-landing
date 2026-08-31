@@ -21,10 +21,10 @@ export function Contact() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid gap-10 lg:grid-cols-5">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
             className="lg:col-span-2"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">Contact</span>
@@ -36,53 +36,75 @@ export function Contact() {
             </p>
 
             <div className="mt-8 space-y-3">
-              <a href="tel:+911234567890" className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all hover:border-primary hover:shadow-card">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary text-white">
+              <motion.a
+                href="tel:+919490906153"
+                whileHover={{ y: -3, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary text-white shadow-soft transition-transform duration-300 group-hover:scale-110">
                   <Phone className="h-5 w-5" />
                 </span>
                 <div>
                   <div className="text-xs font-medium text-muted-foreground">Call us</div>
-                  <div className="text-sm font-bold text-foreground">+91 12345 67890</div>
+                  <div className="text-sm font-bold text-foreground transition-colors duration-200 group-hover:text-primary">+91 94909 06153</div>
                 </div>
-              </a>
-              <a href="https://wa.me/911234567890" className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all hover:border-primary hover:shadow-card">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-accent text-foreground">
+              </motion.a>
+
+              <motion.a
+                href="https://wa.me/919490906153?text=Hi%20Well%20Wisher%2C%20I%20would%20like%20to%20book%20a%20companion."
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-accent text-foreground shadow-soft transition-transform duration-300 group-hover:scale-110">
                   <MessageCircle className="h-5 w-5" />
                 </span>
                 <div>
                   <div className="text-xs font-medium text-muted-foreground">WhatsApp</div>
-                  <div className="text-sm font-bold text-foreground">Chat with us</div>
+                  <div className="text-sm font-bold text-foreground transition-colors duration-200 group-hover:text-primary">+91 94909 06153 / Chat Now</div>
                 </div>
-              </a>
-              <a href="mailto:care@wellwisher.com" className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all hover:border-primary hover:shadow-card">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-mix text-white">
+              </motion.a>
+
+              <motion.a
+                href="mailto:care@wellwisher.com"
+                whileHover={{ y: -3, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-mix text-white shadow-soft transition-transform duration-300 group-hover:scale-110">
                   <Mail className="h-5 w-5" />
                 </span>
                 <div>
                   <div className="text-xs font-medium text-muted-foreground">Email</div>
-                  <div className="text-sm font-bold text-foreground">care@wellwisher.com</div>
+                  <div className="text-sm font-bold text-foreground transition-colors duration-200 group-hover:text-primary">care@wellwisher.com</div>
                 </div>
-              </a>
+              </motion.a>
             </div>
           </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 28, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
             onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-            className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-6 shadow-card sm:p-10"
+            className="lg:col-span-3 rounded-[2rem] border border-border bg-white p-6 shadow-card transition-shadow duration-300 hover:shadow-glow sm:p-10"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Name" name="name" required maxLength={100} placeholder="Your full name" />
-              <Field label="Phone Number" name="phone" type="tel" required maxLength={20} placeholder="+91 12345 67890" />
+              <Field label="Phone Number" name="phone" type="tel" required maxLength={20} placeholder="+91 94909 06153" />
               <Field label="Email" name="email" type="email" required maxLength={255} placeholder="you@example.com" />
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-foreground">Service Needed</label>
                 <select
                   required
-                  className="rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                  className="rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all duration-200 focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                 >
                   <option value="">Select a service</option>
                   {services.map((s) => <option key={s}>{s}</option>)}
@@ -95,17 +117,20 @@ export function Contact() {
                   rows={4}
                   maxLength={1000}
                   placeholder="Tell us about the visit..."
-                  className="mt-1.5 w-full rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                  className="mt-1.5 w-full rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all duration-200 focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                 />
               </div>
             </div>
 
-            <button
+            <motion.button
               type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-sm font-semibold text-white shadow-card transition-transform hover:scale-[1.01]"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-sm font-semibold text-white shadow-card transition-all duration-200 hover:shadow-glow"
             >
               {submitted ? "Thank you — we'll reach out shortly" : (<>Send Booking Request <Send className="h-4 w-4" /></>)}
-            </button>
+            </motion.button>
           </motion.form>
         </div>
       </div>
@@ -119,7 +144,7 @@ function Field({ label, ...props }: { label: string } & React.InputHTMLAttribute
       <label className="text-xs font-semibold text-foreground">{label}</label>
       <input
         {...props}
-        className="rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground/60 focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+        className="rounded-xl border border-border bg-secondary/60 px-4 py-3 text-sm text-foreground outline-none transition-all duration-200 placeholder:text-muted-foreground/60 focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
       />
     </div>
   );

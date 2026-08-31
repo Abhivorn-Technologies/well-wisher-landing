@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import {
   ShieldCheck, FileCheck2, MapPin, Siren, BellRing, Hospital, Car, Headphones,
@@ -19,10 +21,10 @@ export function WhyChoose() {
     <section id="about" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Why Well Wisher</span>
@@ -35,17 +37,17 @@ export function WhyChoose() {
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: i * 0.06, duration: 0.5, ease: "easeOut" }}
-              whileHover={{ y: -6 }}
-              className="group flex items-start gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:border-primary/30 hover:shadow-card"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.05, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="group flex cursor-default items-start gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-card"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-accent text-foreground shadow-soft">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-accent text-foreground shadow-soft transition-transform duration-300 group-hover:scale-110">
                 <f.icon className="h-5 w-5" />
               </span>
-              <span className="pt-1.5 text-sm font-semibold text-foreground">{f.title}</span>
+              <span className="pt-1.5 text-sm font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">{f.title}</span>
             </motion.div>
           ))}
         </div>

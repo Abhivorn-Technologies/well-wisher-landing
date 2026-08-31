@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/wellwisher/Testimonials";
 import { FAQ } from "@/components/wellwisher/FAQ";
 import { Contact } from "@/components/wellwisher/Contact";
 import { Footer } from "@/components/wellwisher/Footer";
+import { FloatingWhatsApp } from "@/components/wellwisher/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <FAQ />
       <Contact />
       <Footer />
+      <FloatingWhatsApp />
     </main>
   );
 }
