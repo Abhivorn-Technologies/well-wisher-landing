@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Phone, MessageSquare, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -26,22 +26,22 @@ function WhatsAppIcon({ className, ...props }: React.ComponentProps<"svg">) {
 }
 
 const quickLinks: FooterLink[] = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Services", href: "/#services" },
+  { label: "How It Works", href: "/#how" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const serviceLinks: FooterLink[] = [
-  { label: "Hospital Visits", href: "#service-hospital-visits" },
-  { label: "Elderly Care", href: "#service-elderly-care" },
-  { label: "Diagnostic Support", href: "#service-diagnostic-support" },
-  { label: "Post Surgery Support", href: "#service-post-surgery" },
-  { label: "Transportation Help", href: "#service-transportation" },
-  { label: "Book a Companion", href: "#contact" },
+  { label: "Hospital Visits", href: "/#service-hospital-visits" },
+  { label: "Elderly Care", href: "/#service-elderly-care" },
+  { label: "Diagnostic Support", href: "/#service-diagnostic-support" },
+  { label: "Post Surgery Support", href: "/#service-post-surgery" },
+  { label: "Transportation Help", href: "/#service-transportation" },
+  { label: "Book a Companion", href: "/#contact" },
 ];
 
 const legalLinks: FooterLink[] = [
@@ -55,32 +55,38 @@ const socialLinks = [
     icon: Instagram,
     label: "Instagram",
     href: "https://www.instagram.com/wellwisherservices/",
+    hoverClasses:
+      "hover:bg-[linear-gradient(45deg,#f09433_0%,#e6683c_25%,#dc2743_50%,#cc2366_75%,#bc1888_100%)] hover:border-transparent hover:shadow-[0_0_16px_rgba(220,39,67,0.4)]",
   },
   {
     icon: Facebook,
     label: "Facebook",
     href: "https://www.facebook.com/profile.php?id=61591784641413",
+    hoverClasses:
+      "hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_16px_rgba(24,119,242,0.4)]",
   },
   {
     icon: WhatsAppIcon,
     label: "WhatsApp",
     href: "https://wa.me/919490906153?text=Hi%20Well%20Wisher%2C%20I%20would%20like%20to%20know%20more%20about%20your%20healthcare%20companion%20services.",
+    hoverClasses:
+      "hover:bg-[#25D366] hover:border-[#25D366] hover:shadow-[0_0_16px_rgba(37,211,102,0.4)]",
   },
 ];
 
 export function Footer() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
+    if (href.startsWith("#") || href.startsWith("/#")) {
       if (typeof window !== "undefined" && window.location.pathname !== "/") {
-        window.location.href = `/${href}`;
+        window.location.href = href.startsWith("/") ? href : `/${href}`;
         return;
       }
       e.preventDefault();
-      const id = href.slice(1);
+      const id = href.replace(/^\/?#/, "");
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", href);
+        window.history.pushState(null, "", `#${id}`);
 
         // Dispatch highlight event for targeted service cards
         if (id.startsWith("service-")) {
@@ -91,34 +97,44 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-border bg-foreground text-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <motion.a
+    <footer className="relative border-t border-white/10 bg-[#031124] text-white">
+      {/* Centered Main Footer Container */}
+      <div className="mx-auto w-full max-w-[1240px] px-6 pt-14 pb-8 md:pt-16 md:pb-10">
+        {/* 4 Balanced Columns */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 items-start">
+          {/* Column 1: Brand Logo & Description & Socials */}
+          <div>
+            {/* Horizontal Compact White Logo Rectangle (approx 220px x 85px) */}
+            <Link
               href="/#home"
               onClick={(e) => handleScroll(e, "#home")}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 rounded-xl bg-white/95 p-3 shadow-soft transition-all duration-200"
+              className="inline-flex h-[82px] w-[210px] sm:w-[220px] items-center justify-center rounded-lg bg-white px-4 shadow-sm transition-transform duration-200 hover:scale-[1.02]"
             >
-              <img src="/well-wisher-logo.png" alt="Well Wisher — Care Like Family" className="h-12 w-auto" />
-            </motion.a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
+              <img
+                src="/well-wisher-logo.png"
+                alt="Well Wisher — Care Like Family"
+                className="h-auto w-[170px] sm:w-[178px] object-contain"
+              />
+            </Link>
+
+            {/* Description Paragraph moved UP closer to logo (aligned with other columns) */}
+            <p className="mt-3.5 text-sm leading-relaxed text-slate-300 max-w-[280px]">
               Trusted healthcare companions for hospital visits, elderly care,
               diagnostics, and patient support across India.
             </p>
-            <div className="mt-5 flex items-center gap-3">
-              {socialLinks.map(({ icon: Icon, label, href }) => (
+
+            {/* Circular Social Icons moved UP together with paragraph */}
+            <div className="mt-4 flex items-center gap-3">
+              {socialLinks.map(({ icon: Icon, label, href, hoverClasses }) => (
                 <motion.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  whileHover={{ y: -3, scale: 1.1 }}
+                  whileHover={{ y: -2, scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white shadow-soft transition-all duration-300 hover:bg-[linear-gradient(180deg,#006bff_0%,#228f33_100%)] hover:shadow-glow focus:outline-none focus-visible:bg-[linear-gradient(180deg,#006bff_0%,#228f33_100%)] focus-visible:ring-2 focus-visible:ring-[#006bff]"
+                  className={`grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 shadow-soft transition-all duration-300 ease-out ${hoverClasses} hover:text-white`}
                 >
                   <Icon className="h-5 w-5" />
                 </motion.a>
@@ -126,18 +142,67 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterCol title="Quick Links" links={quickLinks} onLinkClick={handleScroll} />
-          <FooterCol title="Services" links={serviceLinks} onLinkClick={handleScroll} />
-
+          {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-sm font-bold">Contact &amp; Legal</h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-white/70">
+            <h4 className="text-base font-bold text-white tracking-tight">Quick Links</h4>
+            <ul className="mt-5 space-y-3 text-sm">
+              {quickLinks.map((link) => {
+                const isRoute = link.href.startsWith("/") && !link.href.startsWith("/#") && !link.external;
+                return (
+                  <li key={link.label}>
+                    {isRoute ? (
+                      <Link
+                        href={link.href}
+                        className="inline-block text-slate-300 transition-colors duration-200 hover:text-white"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleScroll(e, link.href)}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                        className="inline-block text-slate-300 transition-colors duration-200 hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Column 3: Services */}
+          <div>
+            <h4 className="text-base font-bold text-white tracking-tight">Services</h4>
+            <ul className="mt-5 space-y-3 text-sm">
+              {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="inline-block text-slate-300 transition-colors duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact & Legal */}
+          <div>
+            <h4 className="text-base font-bold text-white tracking-tight">Contact &amp; Legal</h4>
+            <ul className="mt-5 space-y-3.5 text-sm">
               <li>
                 <a
                   href="tel:+919490906153"
-                  className="flex items-center gap-1.5 transition-colors duration-200 hover:text-white"
+                  className="inline-flex items-center gap-3 text-slate-300 transition-colors duration-200 hover:text-white"
                 >
-                  <span>📞</span> +91 94909 06153
+                  <Phone className="h-4 w-4 text-[#f43f5e] shrink-0" />
+                  <span>+91 94909 06153</span>
                 </a>
               </li>
               <li>
@@ -145,32 +210,31 @@ export function Footer() {
                   href="https://wa.me/919490906153?text=Hi%20Well%20Wisher%2C%20I%20would%20like%20to%20know%20more%20about%20your%20companion%20services."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 transition-colors duration-200 hover:text-white"
+                  className="inline-flex items-center gap-3 text-slate-300 transition-colors duration-200 hover:text-white"
                 >
-                  <span>💬</span> WhatsApp Us
+                  <MessageSquare className="h-4 w-4 text-white/90 shrink-0" />
+                  <span>WhatsApp Us</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:support@wellwisherinfo.com"
-                  onClick={() => {
-                    window.location.href = "mailto:support@wellwisherinfo.com";
-                  }}
-                  className="flex cursor-pointer items-center gap-1.5 transition-colors duration-200 hover:text-white"
+                  className="inline-flex items-center gap-3 text-slate-300 transition-colors duration-200 hover:text-white"
                 >
-                  <span>✉️</span> support@wellwisherinfo.com
+                  <Mail className="h-4 w-4 text-white/90 shrink-0" />
+                  <span>support@wellwisherinfo.com</span>
                 </a>
               </li>
             </ul>
 
-            <div className="mt-6 border-t border-white/10 pt-4">
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-white/60">Legal</h5>
-              <ul className="mt-2.5 space-y-2">
+            <div className="mt-6">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400">LEGAL</h5>
+              <ul className="mt-3 space-y-2.5 text-sm">
                 {legalLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="inline-block text-sm text-white/70 transition-all duration-200 hover:translate-x-1 hover:text-white"
+                      className="inline-block text-slate-300 transition-colors duration-200 hover:text-white"
                     >
                       {link.label}
                     </Link>
@@ -181,24 +245,27 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row">
-          <div>©2026 Well Wisher Companion Services. All rights reserved.</div>
-          <div className="flex flex-wrap items-center justify-center gap-1 md:justify-end">
+        {/* Divider & Copyright Row */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-slate-400 sm:flex-row">
+          <div className="text-center sm:text-left">
+            ©2026 Well Wisher Companion Services. All rights reserved.
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-1.5 text-center sm:justify-end text-slate-400">
             <span>Developed by</span>
             <a
               href="https://abhivorn.com"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-white/60 transition-colors duration-300 hover:text-[#2dc0eb]"
+              className="font-semibold text-white transition-colors duration-200 hover:text-[#2dc0eb]"
             >
               Abhivorn Technologies Pvt Ltd
             </a>
-            <span className="opacity-50">&amp;</span>
+            <span className="text-slate-400">&amp;</span>
             <a
               href="https://www.digilevelup.in/"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-white/60 transition-colors duration-300 hover:text-[#f6c71e]"
+              className="font-semibold text-white transition-colors duration-200 hover:text-[#f6c71e]"
             >
               DIGILEVELUP
             </a>
@@ -206,36 +273,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterCol({
-  title,
-  links,
-  onLinkClick,
-}: {
-  title: string;
-  links: FooterLink[];
-  onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
-}) {
-  return (
-    <div>
-      <h4 className="text-sm font-bold">{title}</h4>
-      <ul className="mt-4 space-y-2">
-        {links.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              onClick={(e) => onLinkClick(e, link.href)}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-              className="inline-block text-sm text-white/70 transition-all duration-200 hover:translate-x-1 hover:text-white"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

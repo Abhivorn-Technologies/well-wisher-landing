@@ -2,11 +2,9 @@
 
 import { Navbar } from "@/components/wellwisher/Navbar";
 import { Hero } from "@/components/wellwisher/Hero";
-import { Metrics } from "@/components/wellwisher/Metrics";
+import { About } from "@/components/wellwisher/About";
 import { Services } from "@/components/wellwisher/Services";
 import { HowItWorks } from "@/components/wellwisher/HowItWorks";
-import { WhyChoose } from "@/components/wellwisher/WhyChoose";
-import { PeaceOfMind } from "@/components/wellwisher/PeaceOfMind";
 import { Testimonials } from "@/components/wellwisher/Testimonials";
 import { FAQ } from "@/components/wellwisher/FAQ";
 import { Contact } from "@/components/wellwisher/Contact";
@@ -18,11 +16,9 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Hero />
-      <Metrics />
+      <About />
       <Services />
       <HowItWorks />
-      <WhyChoose />
-      <PeaceOfMind />
       <Testimonials />
       <FAQ />
       <Contact />
