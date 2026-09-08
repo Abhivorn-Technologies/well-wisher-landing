@@ -24,10 +24,8 @@ import {
   AlertCircle,
   ArrowRight,
   Phone,
-  ArrowLeft,
   CheckCircle2,
 } from "lucide-react";
-import Link from "next/link";
 import { Navbar } from "@/components/wellwisher/Navbar";
 import { Footer } from "@/components/wellwisher/Footer";
 import { FloatingWhatsApp } from "@/components/wellwisher/FloatingWhatsApp";
@@ -146,27 +144,12 @@ export default function AboutUsPage() {
       {/* ============================================================ */}
       {/* SECTION 1 — ABOUT WELL WISHER (HERO)                          */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden pt-32 pb-20 md:pt-36 md:pb-28">
+      <section className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-24">
         <div className="absolute inset-0 -z-10 bg-gradient-hero opacity-75" />
         <div className="absolute -top-32 right-1/4 -z-10 h-96 w-96 rounded-full bg-brand-green/20 blur-3xl" />
         <div className="absolute -bottom-32 left-0 -z-10 h-96 w-96 rounded-full bg-brand-blue/20 blur-3xl" />
 
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          {/* Breadcrumb Back Link */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-6"
-          >
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:underline"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to Home
-            </Link>
-          </motion.div>
-
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
             {/* Left Content */}
             <motion.div
@@ -176,12 +159,7 @@ export default function AboutUsPage() {
               transition={{ duration: 0.65, ease: [0.215, 0.61, 0.355, 1] }}
               className="lg:col-span-7"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary shadow-soft backdrop-blur">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse" />
-                ABOUT US
-              </div>
-
-              <h1 className="mt-4 text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                 Care Like <span className="text-gradient-mix">Family</span>
               </h1>
 

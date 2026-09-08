@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Trash2, Shield, UserCheck, FileText, ArrowLeft, ArrowRight } from "lucide-react";
+import { Shield, UserCheck, FileText, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Navbar } from "@/components/wellwisher/Navbar";
 import { Footer } from "@/components/wellwisher/Footer";
@@ -19,27 +19,12 @@ export default function DataDeletionPolicyPage() {
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <section className="relative overflow-hidden pt-32 pb-20 md:pt-36 md:pb-28">
+      <section className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-24">
         <div className="absolute inset-0 -z-10 bg-gradient-hero opacity-60" />
         <div className="absolute -top-32 right-1/4 -z-10 h-96 w-96 rounded-full bg-brand-green/15 blur-3xl" />
         <div className="absolute -bottom-32 left-0 -z-10 h-96 w-96 rounded-full bg-brand-blue/15 blur-3xl" />
 
         <div className="mx-auto max-w-4xl px-5 md:px-8">
-          {/* Breadcrumb / Back Link */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-6"
-          >
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:underline"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to Home
-            </Link>
-          </motion.div>
-
           {/* Page Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -47,11 +32,7 @@ export default function DataDeletionPolicyPage() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur shadow-soft">
-              <Trash2 className="h-3.5 w-3.5 text-primary" />
-              User Rights &amp; Data Governance
-            </span>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
               Data Deletion <span className="text-gradient-mix">Policy</span>
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
