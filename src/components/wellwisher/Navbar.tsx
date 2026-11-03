@@ -5,12 +5,16 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, Phone, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { APP_LINKS } from "@/lib/app-links";
+import { AppDownloadModal } from "./AppDownloadModal";
 
 /**
  * Well Wisher Mobile App Destination URL
  * Update this URL with the official store listing or download link
  */
-export const WELL_WISHER_APP_URL = "https://play.google.com/store/apps/details?id=com.wellwisher.app";
+export const WELL_WISHER_APP_URL = APP_LINKS.hubUrl;
+export const WELL_WISHER_USER_APP_URL = APP_LINKS.userApp.playStore;
+export const WELL_WISHER_PARTNER_APP_URL = APP_LINKS.partnerApp.playStore;
 
 const links = [
   { label: "Home", href: "/#home", id: "home", isRoute: false },
@@ -256,22 +260,22 @@ export function Navbar() {
             Book Companion
           </motion.a>
 
-          <motion.a
-            href={WELL_WISHER_APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download Well Wisher App"
-            whileHover={{ y: -2, scale: 1.02 }}
-            whileTap={{ scale: 0.96 }}
-            transition={{ duration: 0.2 }}
-            className={`inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs xl:px-3.5 xl:py-1.5 xl:text-sm font-semibold transition-all duration-200 ${
-              isTransparent
-                ? "bg-white text-slate-900 shadow-sm hover:bg-slate-100"
-                : "border border-border bg-white text-primary shadow-soft hover:border-primary hover:bg-secondary/60 hover:shadow-card"
-            }`}
-          >
-            <Smartphone className="h-3.5 w-3.5 xl:h-4 xl:w-4 text-primary" /> App
-          </motion.a>
+          <AppDownloadModal>
+            <motion.button
+              type="button"
+              aria-label="Download Well Wisher Apps"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ duration: 0.2 }}
+              className={`inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs xl:px-3.5 xl:py-1.5 xl:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                isTransparent
+                  ? "bg-white text-slate-900 shadow-sm hover:bg-slate-100"
+                  : "border border-border bg-white text-primary shadow-soft hover:border-primary hover:bg-secondary/60 hover:shadow-card"
+              }`}
+            >
+              <Smartphone className="h-3.5 w-3.5 xl:h-4 xl:w-4 text-primary" /> App
+            </motion.button>
+          </AppDownloadModal>
         </div>
 
         {/* Mobile Menu Button */}
@@ -347,14 +351,15 @@ export function Navbar() {
                 >
                   WhatsApp
                 </a>
-                <a
-                  href={WELL_WISHER_APP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 min-w-[80px] inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-white px-3 py-2 text-center text-sm font-semibold text-primary shadow-soft active:scale-95"
-                >
-                  <Smartphone className="h-4 w-4" /> App
-                </a>
+                <AppDownloadModal>
+                  <button
+                    type="button"
+                    aria-label="Download Well Wisher Apps"
+                    className="flex-1 min-w-[80px] inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-white px-3 py-2 text-center text-sm font-semibold text-primary shadow-soft active:scale-95 cursor-pointer"
+                  >
+                    <Smartphone className="h-4 w-4" /> App
+                  </button>
+                </AppDownloadModal>
               </li>
             </ul>
           </motion.div>

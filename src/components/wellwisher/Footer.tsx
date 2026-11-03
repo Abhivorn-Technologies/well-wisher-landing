@@ -33,6 +33,7 @@ const quickLinks: FooterLink[] = [
   { label: "Testimonials", href: "/#testimonials" },
   { label: "FAQ", href: "/#faq" },
   { label: "Contact", href: "/#contact" },
+  { label: "Download Apps", href: "/download" },
 ];
 
 const serviceLinks: FooterLink[] = [
@@ -48,6 +49,7 @@ const legalLinks: FooterLink[] = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Service", href: "/terms-of-service" },
   { label: "Data Deletion Policy", href: "/data-deletion-policy" },
+  { label: "Mobile Apps & QR Codes", href: "/download" },
 ];
 
 const socialLinks = [
