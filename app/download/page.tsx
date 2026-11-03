@@ -9,13 +9,8 @@ import {
   Heart,
   ShieldCheck,
   Sparkles,
-  ArrowRight,
   PhoneCall,
   MessageCircle,
-  Smartphone,
-  QrCode,
-  Share2,
-  Check,
   UserCheck,
   Clock,
   Briefcase,
@@ -24,8 +19,11 @@ import {
 
 function GooglePlayIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 512 512" className={className} fill="currentColor">
-      <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+    <svg viewBox="0 0 512 512" className={className} fill="none">
+      <path d="M32.5 28.5L271.8 256 32.5 483.5c-4.2-4.5-6.5-10.7-6.5-18.5V47c0-7.8 2.3-14 6.5-18.5z" fill="#4285F4" />
+      <path d="M349.5 178.3L271.8 256 32.5 28.5c5.3-5.7 13.5-9 22.8-9 8.2 0 16.5 2.8 24.2 7.7l270 151.1z" fill="#EA4335" />
+      <path d="M271.8 256l77.7 77.7-270 151.1c-7.7 4.9-16 7.7-24.2 7.7-9.3 0-17.5-3.3-22.8-9L271.8 256z" fill="#34A853" />
+      <path d="M479.5 240.2l-130-72.7-77.7 88.5 77.7 77.7 130-72.8c12.5-7 19.5-17.5 19.5-27.4s-7-20.4-19.5-27.4z" fill="#FBBC05" />
     </svg>
   );
 }
@@ -45,8 +43,6 @@ function DownloadContent() {
   const [device, setDevice] = useState<"android" | "ios" | "desktop">("desktop");
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [redirectTarget, setRedirectTarget] = useState<string>("");
-  const [showQrMobile, setShowQrMobile] = useState<"user" | "partner" | null>(null);
-  const [copiedApp, setCopiedApp] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -82,13 +78,6 @@ function DownloadContent() {
     }
   }, [appParam]);
 
-  const handleCopy = (appName: string, url: string) => {
-    navigator.clipboard.writeText(url);
-    setCopiedApp(appName);
-    setTimeout(() => setCopiedApp(null), 2000);
-  };
-
-  // Full-screen redirect view when scanning from mobile with specific app param
   if (isRedirecting) {
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-center bg-[#031124] text-white p-6 text-center">
@@ -109,7 +98,7 @@ function DownloadContent() {
     <div className="min-h-screen w-full bg-[#f8fafc] text-slate-900 flex flex-col justify-between overflow-x-hidden lg:h-screen lg:overflow-hidden">
       <Navbar />
 
-      {/* Main Container - Fluid & Mobile-First, fits viewport on desktop */}
+      {/* Main Single-Screen Content Container */}
       <main className="flex-1 flex flex-col justify-between pt-16 sm:pt-20 pb-4 px-4 sm:px-6 max-w-[1100px] mx-auto w-full">
         
         {/* Title Header */}
@@ -127,7 +116,7 @@ function DownloadContent() {
           </p>
         </div>
 
-        {/* Responsive App Cards (Single-screen on Desktop, fluid scroll on Mobile) */}
+        {/* Responsive App Cards (Single-Screen on Desktop, fluid scroll on Mobile) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 my-auto max-w-4xl mx-auto w-full items-stretch py-2">
           
           {/* Card 1: User App (Patients & Families) */}
@@ -150,8 +139,8 @@ function DownloadContent() {
                 Hospital visits, elderly care, and appointment support.
               </p>
 
-              {/* QR Code Presentation Box (Visible on Desktop / Collapsible on Mobile) */}
-              <div className="my-3 rounded-xl border border-slate-100 bg-slate-50/80 p-3 flex items-center gap-3.5">
+              {/* QR Code Presentation Box */}
+              <div className="my-3 rounded-xl border border-slate-150 bg-slate-50/80 p-3 flex items-center gap-3.5">
                 <div className="shrink-0 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xs">
                   <img
                     src="/qr/qr-user-app.png"
@@ -186,39 +175,36 @@ function DownloadContent() {
               </div>
             </div>
 
-            {/* Store Action Buttons */}
-            <div className="space-y-1.5 pt-3 mt-2 border-t border-slate-100">
+            {/* Store Action Badges (Side by Side in One Row) */}
+            <div className="grid grid-cols-2 gap-2 sm:gap-2.5 pt-3 mt-2 border-t border-slate-100">
+              {/* Apple App Store */}
+              <div
+                className="relative flex items-center justify-center gap-2 rounded-xl bg-black px-2 sm:px-2.5 py-2 text-white border border-slate-800 shadow-soft cursor-pointer hover:bg-slate-900 transition-colors"
+                title="iOS App Coming Soon"
+              >
+                <AppleIcon className="h-5 w-5 shrink-0 text-white" />
+                <div className="text-left leading-none">
+                  <div className="text-[7.5px] sm:text-[8px] text-slate-300 font-medium">Download on the</div>
+                  <div className="text-xs sm:text-[13px] font-bold text-white tracking-tight mt-0.5">App Store</div>
+                </div>
+                <span className="absolute -top-1.5 -right-1 rounded-full bg-amber-400 text-slate-950 font-extrabold text-[8px] px-1.5 py-0.5 shadow-sm leading-none">
+                  Soon
+                </span>
+              </div>
+
+              {/* Google Play */}
               <a
                 href={APP_LINKS.userApp.playStore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-xl bg-slate-950 px-3.5 py-2.5 text-white shadow-soft hover:bg-[#0066ff] transition-all cursor-pointer"
+                className="flex items-center justify-center gap-2 rounded-xl bg-black px-2 sm:px-2.5 py-2 text-white border border-slate-800 shadow-soft hover:bg-slate-900 transition-colors cursor-pointer group"
               >
-                <div className="flex items-center gap-2.5">
-                  <GooglePlayIcon className="h-5 w-5 text-[#34A853] group-hover:text-white transition-colors" />
-                  <div className="text-left">
-                    <div className="text-[8px] uppercase tracking-wider text-slate-400 group-hover:text-blue-100">GET IT ON</div>
-                    <div className="text-xs font-bold leading-none">Google Play</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-xs font-bold text-slate-300 group-hover:text-white">
-                  <span>Install</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
+                <GooglePlayIcon className="h-5 w-5 shrink-0" />
+                <div className="text-left leading-none">
+                  <div className="text-[7px] sm:text-[7.5px] uppercase tracking-wider text-slate-300 font-medium">GET IT ON</div>
+                  <div className="text-xs sm:text-[13px] font-bold text-white tracking-tight mt-0.5">Google Play</div>
                 </div>
               </a>
-
-              <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/70 px-3.5 py-1.5 text-slate-500">
-                <div className="flex items-center gap-2.5">
-                  <AppleIcon className="h-5 w-5 text-slate-400" />
-                  <div className="text-left">
-                    <div className="text-[8px] uppercase tracking-wider text-slate-400">DOWNLOAD ON</div>
-                    <div className="text-xs font-bold leading-none text-slate-700">App Store</div>
-                  </div>
-                </div>
-                <span className="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] font-bold text-amber-800">
-                  iOS Coming Soon
-                </span>
-              </div>
             </div>
           </div>
 
@@ -242,8 +228,8 @@ function DownloadContent() {
                 Join our network of companions &amp; earn with dignity.
               </p>
 
-              {/* QR Code Presentation Box (Visible on Desktop / Collapsible on Mobile) */}
-              <div className="my-3 rounded-xl border border-slate-100 bg-slate-50/80 p-3 flex items-center gap-3.5">
+              {/* QR Code Presentation Box */}
+              <div className="my-3 rounded-xl border border-slate-150 bg-slate-50/80 p-3 flex items-center gap-3.5">
                 <div className="shrink-0 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xs">
                   <img
                     src="/qr/qr-partner-app.png"
@@ -278,39 +264,36 @@ function DownloadContent() {
               </div>
             </div>
 
-            {/* Store Action Buttons */}
-            <div className="space-y-1.5 pt-3 mt-2 border-t border-slate-100">
+            {/* Store Action Badges (Side by Side in One Row) */}
+            <div className="grid grid-cols-2 gap-2 sm:gap-2.5 pt-3 mt-2 border-t border-slate-100">
+              {/* Apple App Store */}
+              <div
+                className="relative flex items-center justify-center gap-2 rounded-xl bg-black px-2 sm:px-2.5 py-2 text-white border border-slate-800 shadow-soft cursor-pointer hover:bg-slate-900 transition-colors"
+                title="iOS App Coming Soon"
+              >
+                <AppleIcon className="h-5 w-5 shrink-0 text-white" />
+                <div className="text-left leading-none">
+                  <div className="text-[7.5px] sm:text-[8px] text-slate-300 font-medium">Download on the</div>
+                  <div className="text-xs sm:text-[13px] font-bold text-white tracking-tight mt-0.5">App Store</div>
+                </div>
+                <span className="absolute -top-1.5 -right-1 rounded-full bg-amber-400 text-slate-950 font-extrabold text-[8px] px-1.5 py-0.5 shadow-sm leading-none">
+                  Soon
+                </span>
+              </div>
+
+              {/* Google Play */}
               <a
                 href={APP_LINKS.partnerApp.playStore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-xl bg-slate-950 px-3.5 py-2.5 text-white shadow-soft hover:bg-[#059669] transition-all cursor-pointer"
+                className="flex items-center justify-center gap-2 rounded-xl bg-black px-2 sm:px-2.5 py-2 text-white border border-slate-800 shadow-soft hover:bg-slate-900 transition-colors cursor-pointer group"
               >
-                <div className="flex items-center gap-2.5">
-                  <GooglePlayIcon className="h-5 w-5 text-[#34A853] group-hover:text-white transition-colors" />
-                  <div className="text-left">
-                    <div className="text-[8px] uppercase tracking-wider text-slate-400 group-hover:text-emerald-100">GET IT ON</div>
-                    <div className="text-xs font-bold leading-none">Google Play</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-xs font-bold text-slate-300 group-hover:text-white">
-                  <span>Install</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
+                <GooglePlayIcon className="h-5 w-5 shrink-0" />
+                <div className="text-left leading-none">
+                  <div className="text-[7px] sm:text-[7.5px] uppercase tracking-wider text-slate-300 font-medium">GET IT ON</div>
+                  <div className="text-xs sm:text-[13px] font-bold text-white tracking-tight mt-0.5">Google Play</div>
                 </div>
               </a>
-
-              <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/70 px-3.5 py-1.5 text-slate-500">
-                <div className="flex items-center gap-2.5">
-                  <AppleIcon className="h-5 w-5 text-slate-400" />
-                  <div className="text-left">
-                    <div className="text-[8px] uppercase tracking-wider text-slate-400">DOWNLOAD ON</div>
-                    <div className="text-xs font-bold leading-none text-slate-700">App Store</div>
-                  </div>
-                </div>
-                <span className="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] font-bold text-amber-800">
-                  iOS Coming Soon
-                </span>
-              </div>
             </div>
           </div>
 
