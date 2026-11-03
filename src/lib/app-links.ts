@@ -51,4 +51,6 @@ export const APP_LINKS = {
     ],
   },
   hubUrl: "https://www.wellwisherinfo.com/download",
+  hubQrCodeImage: "/qr/qr-download.png",
+  hubQrCodeSvg: "/qr/qr-download.svg",
 };

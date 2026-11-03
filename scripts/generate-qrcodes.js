@@ -8,16 +8,23 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Exactly one single universal QR code for each application:
-// - Android: Automatically routes to Google Play Store
-// - iOS: Automatically routes to Apple App Store
+// Canonical QR Code targets
 const targets = [
+  {
+    name: 'qr-download',
+    title: 'Well Wisher Download Hub (All Apps & Devices)',
+    url: 'https://www.wellwisherinfo.com/download',
+    color: {
+      dark: '#031124', // Clean, high-contrast dark
+      light: '#ffffff',
+    },
+  },
   {
     name: 'qr-user-app',
     title: 'Well Wisher User App (Universal - iOS & Android)',
     url: 'https://www.wellwisherinfo.com/download/user',
     color: {
-      dark: '#031124', // Clean, high-contrast dark
+      dark: '#031124',
       light: '#ffffff',
     },
   },
@@ -26,18 +33,20 @@ const targets = [
     title: 'Well Wisher Partner / Caretaker App (Universal - iOS & Android)',
     url: 'https://www.wellwisherinfo.com/download/partner',
     color: {
-      dark: '#031124', // Clean, high-contrast dark
+      dark: '#031124',
       light: '#ffffff',
     },
   },
 ];
 
 async function generateAll() {
-  console.log('Generating single QR codes in:', outputDir);
+  console.log('Generating QR codes in:', outputDir);
 
   for (const item of targets) {
     const pngPath = path.join(outputDir, `${item.name}.png`);
+    const svgPath = path.join(outputDir, `${item.name}.svg`);
 
+    // High-resolution 1024x1024 PNG
     await QRCode.toFile(pngPath, item.url, {
       width: 1024,
       margin: 2,
@@ -45,7 +54,16 @@ async function generateAll() {
       color: item.color,
     });
 
-    console.log(`✓ Generated: ${item.name}.png (${item.title}) -> ${item.url}`);
+    // Crisp scalable vector SVG
+    const svgString = await QRCode.toString(item.url, {
+      type: 'svg',
+      margin: 2,
+      errorCorrectionLevel: 'H',
+      color: item.color,
+    });
+    fs.writeFileSync(svgPath, svgString, 'utf8');
+
+    console.log(`✓ Generated: ${item.name}.png & ${item.name}.svg (${item.title}) -> ${item.url}`);
   }
 
   console.log('\nQR code generation complete.');
